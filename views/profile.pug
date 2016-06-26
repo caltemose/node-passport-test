@@ -1,0 +1,15 @@
+extends layouts/default
+
+block content
+    main
+        h1 User Profile
+
+        ul.profile-info
+            li
+                | id:
+                = ' '
+                span= user._id
+            li
+                | email:
+                = ' '
+                span= user.local.email

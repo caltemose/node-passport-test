@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+main {
+    margin: 1em;
+}
+
+footer {
+    margin: 3em 0;
+    padding: 1em;
+    background: #eee;
+}
+
+footer nav a {
+    display: inline-block;
+    margin-right: 1em;
+}
+
+label {
+    display: block;
+    margin: 0.5em 0 1.5em;
+}
+
+label > span {
+    display: block;
+    width: 70px;
+}
+
+label > input {
+    display: block;
+}
+
+input {
+    font-size: 1.3em;
+}
+
+.profile-info > li {
+    margin-bottom: 0.5em;
+}
+
+.profile-info > li > span {
+    font-weight: bold;
+}
