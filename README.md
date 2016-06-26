@@ -1,3 +1,3 @@
 # Node/Passport/Mongo Testing
 
-A playground.
+A playground for messing with node/passport/mongo.
