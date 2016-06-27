@@ -1,2 +1,4 @@
 .DS_Store
 node_modules
+config/auth.js
+npm-debug.log

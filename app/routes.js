@@ -43,6 +43,57 @@ module.exports = function (app, passport) {
         res.redirect('/');
     });
 
+    // google authentication
+
+    app.get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}));
+
+    app.get('/auth/google/callback', passport.authenticate('google', {
+        successRedirect: '/profile',
+        failureRedirect: '/'
+    }));
+
+    // authorize-local
+
+    app.get('/connect/local', function (req, res) {
+        res.render('connect-local', {message: req.flash('loginMessage')});
+    });
+
+    app.post('/connect/local', passport.authenticate('local-signup', {
+        successRedirect: '/profile',
+        failureRedirect: '/signup',
+        failureFlash: true
+    }));
+
+    // authorize-google
+
+    app.get('/connect/google', passport.authenticate('google', {scope: ['profile', 'email']}));
+
+    app.get('/connect/google/callback', passport.authorize('google', {
+        successRedirect: '/profile',
+        failureRedirect: '/'
+    }));
+
+    // unlink accounts
+
+    app.get('/unlink/local', function (req, res) {
+        var user = req.user;
+        user.local.email = undefined;
+        user.local.password = undefined;
+        user.save(function (err) {
+            res.redirect('/profile');
+        });
+    })
+
+    app.get('/unlink/google', function (req, res) {
+        var user = req.user;
+        user.google.token = undefined;
+        user.save(function (err) {
+            res.redirect('/profile');
+        });
+    })
+
+    // helpers
+
     function requireUser(req, res, next) {
         if (req.isAuthenticated()) return next();
         res.redirect('/');

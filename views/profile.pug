@@ -4,6 +4,8 @@ block content
     main
         h1 User Profile
 
+        h2 Local Account Info:
+
         ul.profile-info
             li
                 | id:
@@ -13,3 +15,29 @@ block content
                 | email:
                 = ' '
                 span= user.local.email
+            li
+                a(href="/unlink/local") Unlink
+                a(href="/connect/local") Connect Local
+
+        h2 Google Account Info:
+
+        ul.profile-info
+            li
+                | id:
+                = ' '
+                span= user.google.id
+            li
+                | token:
+                = ' '
+                span= user.google.token
+            li
+                | email:
+                = ' '
+                span= user.google.email
+            li
+                | name:
+                = ' '
+                span= user.google.name
+            li
+                a(href="/unlink/google") Unlink
+                a(href="/connect/google") Connect Google
